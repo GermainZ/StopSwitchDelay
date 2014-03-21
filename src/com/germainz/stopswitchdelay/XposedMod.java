@@ -9,14 +9,8 @@ public class XposedMod implements IXposedHookZygoteInit {
 
     @Override
     public void initZygote(StartupParam startupParam) throws Throwable {
-
-        findAndHookMethod("com.android.server.am.ActivityManagerService", null, "stopAppSwitches", new XC_MethodReplacement() {
-            @Override
-            protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
-                return null;
-            }
-        });
-
+        findAndHookMethod("com.android.server.am.ActivityManagerService", null, "stopAppSwitches",
+                XC_MethodReplacement.returnConstant(null));
     }
 
 }
